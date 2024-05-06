@@ -37,6 +37,7 @@ const WeatherContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
 `;
 
 const WeatherInfoContainer = styled.div`
@@ -61,7 +62,6 @@ const Weather = ({ weather, loading = true }) => {
         <div className="flex h-full">
           <div className="m-auto" role="status">
             <Spinner />
-            <span class="sr-only">Loading...</span>
           </div>
         </div>
       ) : weather ? (
@@ -94,32 +94,30 @@ const Weather = ({ weather, loading = true }) => {
           </WeatherInfoContainer>
         </>
       ) : (
-        <div className="flex h-full flex-col">
+        <div className="flex h-full flex-col bg">
           <span className="m-auto text-center text-sm">
             <img src={appLogo} className="w-24 mx-auto" alt="App logo" />
-            <div className="font-medium text-3xl mb-4 mt-4">
-              Weather Station Dashboard
-            </div>
+            <div className="font-medium text-3xl mb-4 mt-4">Weather SA 🇿🇦</div>
             Search for a City
           </span>
           <span className="block text-center text-md">
             <div className="mb-1">
               <a
-                href="https://github.com/TanmayPShinde/react-weather-app"
+                href="https://github.com/YamukelwaTech"
                 target="_blank"
                 rel="noreferrer"
               >
                 <img src={github} alt="github" className="inline" />{" "}
               </a>
               <a
-                href="http://www.linkedin.com/in/tanmay-p-shinde"
+                href="https://www.linkedin.com/in/yamukelwa-msimango-"
                 target="_blank"
                 rel="noreferrer"
               >
                 <img src={linkedin} alt="linkedin" className="inline" />{" "}
               </a>
             </div>
-            - Tanmay
+            © YamukelwaTech
           </span>
         </div>
       )}
