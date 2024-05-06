@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import Globe from "react-globe.gl";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const WeatherGlobe = ({ labelsData, setWeatherData, weatherData }) => {
   const globRef = useRef();
-  
+
   useEffect(() => {
     const MAP_CENTER = { lat: 0, lng: 0, altitude: 2.5 };
     globRef.current.pointOfView(MAP_CENTER, 0);
@@ -38,15 +38,15 @@ const WeatherGlobe = ({ labelsData, setWeatherData, weatherData }) => {
       labelLng={(d) => d.lon}
       labelText={(d) => d.name}
       labelSize={(d) => 2}
-      labelDotRadius={(d) => 0.5}
-      labelColor={(d) => "black"}
+      labelDotRadius={(d) => 1.5}
+      labelColor={(d) => "white"}
       pointOfView={[{ lat: 18.5196, lng: 73.8553, altitude: 2.5 }]}
       labelResolution={3}
       labelLabel={(d) => "click"}
       onLabelClick={(label) => {
-        if (labelsData.length > 1 || !weatherData)
-          setWeatherData(label.weatherData);
-        else toast.info("Add multiple cities on Globe to switch between them!");
+        // if (labelsData.length > 1 || !weatherData)
+        //   setWeatherData(label.weatherData);
+        // else toast.info("Add multiple cities on Globe to switch between them!");
       }}
     />
   );
