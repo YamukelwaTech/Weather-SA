@@ -8,7 +8,7 @@ const PrimaryButton = ({ onClickHandler, sx, disabled, type }) => {
       type={type}
       className={
         sx +
-        " text-gray-100 font-medium text-sm bg-slate-900 active:bg-slate-700 disabled:opacity-50 "
+        " text-black font-medium text-sm bg-customOrange active:bg-customRed disabled:opacity-50 "
       }
     >
       <img src={icon} alt="search icon" className="w-8" />
