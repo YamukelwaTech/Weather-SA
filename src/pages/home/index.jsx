@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import Container from "../../components/Container";
 import Search from "../../components/Search";
 import Weather from "../../components/weather";
 import api from "../../constants/api";
 import WeatherGlobe from "./WeatherGlobe";
-import Branding from "./Branding";
 
 const Home = () => {
   const [city, setCity] = useState();
   const [labelsData, setLabelsData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [weatherData, setWeatherData] = useState();
+  const [isLaptop, setIsLaptop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptop(window.innerWidth > 1024); // Adjusted threshold for laptops
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleSeacrch = async (e) => {
     e.preventDefault();
@@ -56,14 +70,17 @@ const Home = () => {
       setLoading(false);
     }
   };
+
   return (
     <>
       <div className="flex flex-row flex-wrap-reverse ">
-        <WeatherGlobe
-          labelsData={labelsData}
-          setWeatherData={setWeatherData}
-          weatherData={weatherData}
-        />
+        {isLaptop && (
+          <WeatherGlobe
+            labelsData={labelsData}
+            setWeatherData={setWeatherData}
+            weatherData={weatherData}
+          />
+        )}
         <div
           className="p-2 mt-32 mx-auto lg:ml-24 lg:mr-auto lg:my-auto"
           style={{ width: "380px" }}
@@ -80,7 +97,6 @@ const Home = () => {
           </Container>
         </div>
       </div>
-      {weatherData && <Branding />}
     </>
   );
 };
